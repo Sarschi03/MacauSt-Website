@@ -19,6 +19,11 @@
   }
 }
 
+a:hover span:not(:last-child) {
+  transform: translate(-50%, -50%) scale(4);
+  transition: 1.2s ease;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -26,6 +31,5 @@ body {
 }
 
 
-@tailwind base;
-@tailwind components;
+
 @tailwind utilities;
