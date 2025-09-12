@@ -10,6 +10,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import Lenis from "@studio-freight/lenis";
+import CustomCursor from "./Cursor";
 
 
 const roboto = Roboto({
@@ -17,11 +18,7 @@ const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
 });
 
-
-
-
 gsap.registerPlugin(ScrollTrigger);
-
 
 function useSplitScrollReveal({
   selector = "[data-split]",
@@ -46,15 +43,15 @@ function useSplitScrollReveal({
     const tls: gsap.core.Timeline[] = [];
 
     els.forEach((el) => {
-    
+
       if ((el as any).__splitDone) return;
       (el as any).__splitDone = true;
 
-  
+
       const split = new SplitType(el, { types: "lines,words", tagName: "span" });
       splits.push(split);
 
-      
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
@@ -71,12 +68,11 @@ function useSplitScrollReveal({
         duration: 0.75,
         ease: "expo.out",
         stagger,
-        rotate: 0.0001, 
+        rotate: 0.0001,
       });
 
       tls.push(tl);
     });
-
 
     return () => {
       tls.forEach((t) => t.kill());
@@ -84,6 +80,61 @@ function useSplitScrollReveal({
       ScrollTrigger.refresh();
     };
   }, [selector, stagger, once, scrub, start, end]);
+}
+
+function useCardSlideReveal({
+  container = "[data-cards]",
+  item = "[data-card]",
+  yFrom = -120,
+  duration = 1.2,
+  stagger = 0.28,
+  start = "top center+=10",
+  once = true,
+  ease = "power4.out",
+  delay = 0.6,
+}: 
+{
+  container?: string;
+  item?: string;
+  yFrom?: number;
+  duration?: number;
+  stagger?: number;
+  start?: string;
+  once?: boolean;
+  ease?: string;
+  delay?: number;
+} = {}) {
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const ctx = gsap.context(() => {
+      const wraps = gsap.utils.toArray<HTMLElement>(container);
+      wraps.forEach((wrap) => {
+        const cards = Array.from(wrap.querySelectorAll<HTMLElement>(item));
+        if (!cards.length) return;
+
+        gsap.set(cards, { y: yFrom, opacity: 0, willChange: "transform,opacity" });
+
+        const tl = gsap.timeline({ defaults: { ease, duration }, delay })
+          .to(cards, {
+            y: 0,
+            opacity: 1,
+            stagger: { each: stagger, from: "start" },
+            clearProps: "transform,opacity,willChange",
+          });
+
+        ScrollTrigger.create({
+          trigger: wrap,
+          start,
+          once,
+          animation: tl,
+
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, [container, item, yFrom, duration, stagger, start, once, ease, delay]);
 }
 
 
@@ -142,7 +193,8 @@ function FloatingBadge({
   style,
   floatDelay = 0,
   floatDuration = 5,
-}: {
+}: 
+{
   title: string;
   subtitle?: string;
   icon: ReactNode;
@@ -201,7 +253,6 @@ function FloatingBadge({
   );
 }
 
-
 function Feature({ title, desc }: { title: string; desc: string }) {
   return (
     <motion.div
@@ -232,13 +283,16 @@ function Feature({ title, desc }: { title: string; desc: string }) {
 }
 
 export default function Home() {
- 
+
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+
     const raf = (time: number) => {
       lenis.raf(time);
+      ScrollTrigger.update();
       requestAnimationFrame(raf);
     };
+
     requestAnimationFrame(raf);
     return () => lenis.destroy();
   }, []);
@@ -246,12 +300,24 @@ export default function Home() {
 
   useSplitScrollReveal({
     selector: "[data-split]",
-    stagger: 0.035,
+    stagger: 0.04,
     once: true,
     scrub: false,
-    start: "top 85%",
+    start: "top 88%",     
     end: "bottom 60%",
   });
+
+  useCardSlideReveal({
+    yFrom: -200,
+    duration: 2,
+    stagger: 0.25,
+    start: "top 55%+=120",
+    delay: 0.5,
+    once: true,
+    ease: "power4.out",
+  });
+
+
 
   const [showIntro, setShowIntro] = useState(true);
 
@@ -319,7 +385,7 @@ export default function Home() {
   const weY = useTransform(scrollYProgress, [0, 1], [weStart, weStart + weDelta]);
 
   return (
-    <>
+    <> <CustomCursor />
       <AnimatePresence>
         {showIntro && <IntroOverlay onFinish={() => setShowIntro(false)} />}
       </AnimatePresence>
@@ -355,7 +421,7 @@ export default function Home() {
           </div>
         </header>
 
-    
+
         <section className="mx-auto max-w-7xl -mt-8">
           <div className="grid gap-4">
             <div className="grid lg:grid-cols-2 gap-10 items-start">
@@ -401,7 +467,7 @@ export default function Home() {
           </div>
         </section>
 
- 
+
         <section id="about" className="mx-auto max-w-5xl px-8 py-14 mt-12 ">
           <div className="grid md:grid-cols-[500px_1fr] gap-15 items-start mt-15">
             <div className="relative h-96 overflow-hidden bg-zinc-200 rounded-3xl">
@@ -456,20 +522,20 @@ export default function Home() {
               <div ref={linesGroupRef} className="flex flex-col gap-3 mt-0">
                 <p
                   ref={line0Ref}
-                  
+
                   className="font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)] whitespace-nowrap"
                 >
                   Traders.
                 </p>
                 <p
-                  
+
                   className="font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)] whitespace-nowrap"
                 >
                   Connectors.
                 </p>
                 <p
                   ref={line2Ref}
-                  
+
                   className="font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)] whitespace-nowrap"
                 >
                   Global&nbsp;Thinkers.
@@ -478,8 +544,8 @@ export default function Home() {
             </div>
           </section>
 
-       
-          <div className="mt-6">
+
+          <div className="mt-6 mb-25">
             <div className="flex items-center gap-3 text-sm">
               <span className="inline-block h-2 w-2 rounded-full bg-zinc-400/90" />
               <span data-split className="tracking-wide text-zinc-500/90">Delivering Quality</span>
@@ -498,7 +564,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div  data-nosplit className="mt-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 font-normal leading-[0.98] tracking-[-0.01em] text-zinc-700/90 text-[clamp(1rem,2vw,2rem)]">
+          <div
+            data-cards
+            data-nosplit
+            className="mt-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-3 font-normal leading-[0.98] tracking-[-0.01em] text-zinc-700/90 text-[clamp(1rem,2vw,2rem)]"
+          >
             {[
               {
                 title: "Global Trade & Distribution",
@@ -520,30 +590,28 @@ export default function Home() {
               },
             ].map((card) => (
               <div
+                data-card
                 key={card.title}
                 className="relative overflow-hidden rounded-[28px] bg-white border border-zinc-100 shadow-[0_12px_30px_rgba(0,0,0,0.06)]"
               >
-                <div className="pointer-events-none absolute inset-y-0 right-[-6%]  bottom-[-20%] flex items-center">
+                <div className="pointer-events-none absolute inset-y-0 right-[-6%] bottom-[-20%] flex items-center">
                   <span className="select-none leading-none font-black text-zinc-900/5 text-[60px] md:text-[60px] lg:text-[150px]">
                     {card.glyph}
                   </span>
                 </div>
 
                 <div className="px-12 py-14 text-center">
-                  <h3  className="text-2xl font-extrabold leading-tight">
-                    {card.title}
-                  </h3>
+                  <h3 className="text-2xl font-extrabold leading-tight">{card.title}</h3>
                   <div className="mx-auto mt-6 mb-2 h-4 w-4 rounded-full bg-zinc-300/80" />
-                  <p  className="mt-2 text-lg text-zinc-700 leading-relaxed">
-                    {card.body}
-                  </p>
+                  <p className="mt-2 text-lg text-zinc-700 leading-relaxed">{card.body}</p>
                 </div>
               </div>
             ))}
           </div>
+
         </section>
 
-        
+
         <section className="relative bg-zinc-900 text-zinc-50 overflow-hidden">
           <div className="mx-auto max-w-7xl px-4 py-16">
             <div className="flex items-center gap-3 text-sm">
@@ -604,7 +672,7 @@ export default function Home() {
             </p>
           </div>
 
-          
+
           <motion.div
             className="relative mt-8 h-[420px] sm:h-[460px] lg:h-[520px] w-full"
             initial="hidden"
@@ -724,7 +792,7 @@ export default function Home() {
         </div>
       </footer>
 
-    
+
       <style jsx global>{`
         [data-split] { will-change: transform; }
         [data-split] .line { display: block; overflow: hidden; }

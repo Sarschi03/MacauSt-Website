@@ -31,5 +31,48 @@ body {
 }
 
 
+/* Hide the native cursor only on devices where our custom cursor runs */
+.custom-cursor-enabled, .custom-cursor-enabled body {
+  cursor: none;
+}
 
+.custom-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* Outer ring */
+.custom-cursor__ring {
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  border: 2px solid #fff;
+  mix-blend-mode: difference; /* white ring inverts over content, like the demo */
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Inner dot */
+.custom-cursor__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #fff;
+  mix-blend-mode: difference;
+}
+
+/* Optional: when active over interactive elements */
+.custom-cursor__ring.is-active {
+  /* you can tweak look while active */
+}
+
+/* Mobile: keep the native cursor/touch */
+@media (hover: none) {
+  .custom-cursor { display: none; }
+  .custom-cursor-enabled, .custom-cursor-enabled body { cursor: auto; }
+}
+ 
 @tailwind utilities;
