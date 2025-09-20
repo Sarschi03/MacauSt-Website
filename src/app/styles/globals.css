@@ -31,7 +31,7 @@ body {
 }
 
 
-/* Hide the native cursor only on devices where our custom cursor runs */
+
 .custom-cursor-enabled, .custom-cursor-enabled body {
   cursor: none;
 }
@@ -45,17 +45,17 @@ body {
   will-change: transform;
 }
 
-/* Outer ring */
+
 .custom-cursor__ring {
   width: 20px;
   height: 20px;
   border-radius: 9999px;
   border: 2px solid #fff;
-  mix-blend-mode: difference; /* white ring inverts over content, like the demo */
+  mix-blend-mode: difference; 
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Inner dot */
+
 .custom-cursor__dot {
   width: 6px;
   height: 6px;
@@ -64,9 +64,34 @@ body {
   mix-blend-mode: difference;
 }
 
-/* Optional: when active over interactive elements */
+/* rectangular scoop: --w/--h = notch size, --r = inner corner radius */
+.mask-scoop-rect {
+  --w: 260px;   /* width of cut from right edge */
+  --h: 170px;   /* height of cut from bottom   */
+  --r: 36px;    /* roundness of inner corner   */
+
+  /* Build the notch from two strips + a rounded inner corner, then subtract it */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) bottom / 100% var(--h) no-repeat,
+    linear-gradient(#fff 0 0) right  / var(--w) 100% no-repeat,
+    radial-gradient(var(--r) at calc(100% - var(--w)) calc(100% - var(--h)),
+                    #fff 99%, transparent 101%),
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: source-over, source-over, source-over, destination-out; /* Safari */
+
+  mask:
+    linear-gradient(#fff 0 0) bottom / 100% var(--h) no-repeat,
+    linear-gradient(#fff 0 0) right  / var(--w) 100% no-repeat,
+    radial-gradient(var(--r) at calc(100% - var(--w)) calc(100% - var(--h)),
+                    #fff 99%, transparent 101%),
+    linear-gradient(#fff 0 0);
+  mask-composite: add, add, add, exclude; /* Chromium/Firefox */
+}
+
+
+
 .custom-cursor__ring.is-active {
-  /* you can tweak look while active */
+ 
 }
 
 /* Mobile: keep the native cursor/touch */
