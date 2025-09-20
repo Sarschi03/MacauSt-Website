@@ -34,13 +34,13 @@ export default function DarkShowcase() {
                                 className="object-cover"
                                 sizes="(min-width:1024px) 896px, (min-width:640px) 90vw, 100vw"
                             />
-                            {/* Square-ish notch to match desktop look */}
+                           
                             <span
                                 aria-hidden
                                 className="pointer-events-none absolute bottom-[-24px] right-[-24px]
-                           w-[160px] h-[116px] rounded-[28px]
+                           w-[160px] h-[100px] rounded-[20px]
                            sm:w-[220px] sm:h-[140px] sm:rounded-[32px]
-                           lg:w-[320px] lg:h-[180px] lg:rounded-[40px]
+                           lg:w-[220px] lg:h-[130px] lg:rounded-[40px]
                            lg:bottom-[-48px] lg:right-[-48px] bg-zinc-900"
                             />
                         </div>

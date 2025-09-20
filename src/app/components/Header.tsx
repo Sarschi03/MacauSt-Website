@@ -14,7 +14,7 @@ export default function Header() {
           <Image src="/ms.logo3.png" alt="Macau Station Logo" width={30} height={30} className="shrink-0" priority />
         </a>
 
-        {/* Desktop nav (unchanged) */}
+        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-12 text-[15px]">
           <a href="#page" className="hover:text-zinc-700 transition-colors" data-split>Home</a>
           <a href="./aboutus.tsx" className="hover:text-zinc-700 transition-colors" data-split>About Us</a>

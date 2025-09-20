@@ -1,4 +1,4 @@
-// sections/About.tsx
+
 "use client";
 
 import React, { useRef, useLayoutEffect, useState } from "react";
@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function About() {
-  // === “We are …” sticky label measurements (same behavior as original) ===
+  // === “We are …” 
   const weSectionRef = useRef<HTMLDivElement | null>(null);
   const linesGroupRef = useRef<HTMLDivElement | null>(null);
   const line0Ref = useRef<HTMLParagraphElement | null>(null);
@@ -41,10 +41,9 @@ export default function About() {
     };
 
     const readyAndMeasure = async () => {
-      // Wait for fonts to be ready so measurements are accurate
-      // @ts-ignore
+
       if (document?.fonts?.ready) {
-        // @ts-ignore
+
         await document.fonts.ready;
       }
       requestAnimationFrame(measure);
@@ -59,7 +58,7 @@ export default function About() {
 
   return (
     <section id="about" className="mx-auto max-w-5xl px-8 py-14 mt-12">
-      {/* Top split: image left, copy right (unchanged desktop look) */}
+
       <div className="grid md:grid-cols-[500px_1fr] gap-15 items-start mt-15">
         <div className="relative h-96 overflow-hidden bg-zinc-200 rounded-3xl">
           <div
@@ -110,7 +109,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* “We are …” scrolly label section (unchanged) */}
+      {/* “We are …” */}
       <section
         ref={weSectionRef}
         className="mx-auto w-full max-w-2xl px-20 py-20 mt-25"
@@ -153,7 +152,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Lead-in title/paragraph above the cards (same spacing as original) */}
+     
       <div className="mt-6 mb-25">
         <div className="flex items-center gap-3 text-sm">
           <span className="inline-block h-2 w-2 rounded-full bg-zinc-400/90" />
@@ -178,7 +177,7 @@ export default function About() {
         </p>
       </div>
 
-      {/* === CARDS (exact original look + hooks) === */}
+      {/* === CARDS */}
       <div
         data-cards
         data-nosplit
