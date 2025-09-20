@@ -16,12 +16,12 @@ export default function Contact() {
             data-split
             className="mt-4 sm:mt-6 font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)]"
           >
-            From Origin to <br className="hidden md:block" /> Every Destination
+            How Can  <br className="hidden md:block" /> We Help?
           </h2>
 
           <p data-split className="mt-4 sm:mt-8 max-w-3xl text-[15px] leading-7 sm:leading-8 text-zinc-600/90">
-            We are your gateway to global trade success. With a deep understanding of international markets and a passion for
-            precision, we act as trusted partners for companies seeking smart, reliable, and scalable trade solutions.
+            Tell us what you need. We’ll locate the right supplier and deliver—reliably, fast, and with clear pricing.
+            No long plans. Just results—sourcing you can trust and shipments that arrive on time.
           </p>
         </div>
 

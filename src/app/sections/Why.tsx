@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Why() {
   return (
-    <section id="why" className="mx-auto max-w-7xl px-4 sm:px-6 py-10 sm:py-14">
+    <section id="why" className="mx-auto max-w-7xl mt-20 px-4 sm:px-6 py-10 sm:py-14">
       <div className="pt-2">
         <div className="flex items-center gap-3 text-sm">
           <span className="inline-block h-2 w-2 rounded-full bg-zinc-400/90" />
@@ -16,7 +16,7 @@ export default function Why() {
           data-split
           className="mt-4 sm:mt-6 font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)]"
         >
-          From Origin to <br className="hidden md:block" /> Every Destination
+          Why Leading Teams <br className="hidden md:block" /> Choose Us
         </h2>
 
         <p
@@ -85,7 +85,7 @@ export default function Why() {
                 />
               </svg>
             }
-            style={{ left: "50%", top: "44%", transform: "translate(-50%, 0)" }}
+            style={{ left: "50%", top: "50%", transform: "translate(-50%, 0)" }}
             floatDelay={1.0}
             floatDuration={5.6}
           />

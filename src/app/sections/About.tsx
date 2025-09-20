@@ -166,7 +166,7 @@ export default function About() {
           data-split
           className="mt-6 font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)]"
         >
-          From Origin to <br className="hidden md:block" /> Every Destination
+          What We <br className="hidden md:block" /> Deliver
         </h2>
 
         <p
