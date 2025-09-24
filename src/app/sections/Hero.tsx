@@ -21,8 +21,8 @@ export default function Hero() {
 
             </video>
 
-
-            {/* Content on top of video */}
+            <div className="absolute inset-0 bg-black/40" />
+            
             <div className="relative z-10 -mt-20 mx-auto max-w-7xl px-4 sm:px-12 min-h-screen flex items-center">
                 <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 items-start pt-28 sm:pt-24">
                     <div>
@@ -60,8 +60,8 @@ export default function Hero() {
                 </div>
             </div>
 
-            {/* Soft fade into next section (match your main bg, e.g., bg-zinc-50) */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-zinc-50 to-transparent" />
+            
+            
         </section>
     );
 }
