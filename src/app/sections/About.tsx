@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useRef, useLayoutEffect, useState } from "react";
@@ -41,9 +40,7 @@ export default function About() {
     };
 
     const readyAndMeasure = async () => {
-
       if (document?.fonts?.ready) {
-
         await document.fonts.ready;
       }
       requestAnimationFrame(measure);
@@ -58,7 +55,6 @@ export default function About() {
 
   return (
     <section id="about" className="mx-auto max-w-5xl px-8 py-14 mt-12">
-
       <div className="grid md:grid-cols-[500px_1fr] gap-15 items-start mt-15">
         <div className="relative h-96 overflow-hidden bg-zinc-200 rounded-3xl">
           <div
@@ -91,21 +87,31 @@ export default function About() {
             From Origin to <br className="hidden md:block" /> Every Destination
           </h2>
 
-          <p
+          {/* === CHANGED: smooth, GPU-accelerated reveal (no lag) */}
+          <motion.p
             data-split
-            className="mt-8 max-w-3xl text-[15px] leading-8 text-zinc-600/90"
+            className="mt-8 max-w-3xl text-[15px] leading-8 text-zinc-600/90 will-change-transform transform-gpu [backface-visibility:hidden]"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
           >
             We are your gateway to global trade success. With a deep understanding of international markets and a passion for
             precision, we act as trusted partners for companies seeking smart, reliable, and scalable trade solutions.
-          </p>
+          </motion.p>
 
-          <p
+          <motion.p
             data-split
-            className="mt-4 font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1rem,1vw,1rem)]"
+            className="mt-4 font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1rem,1vw,1rem)] will-change-transform transform-gpu [backface-visibility:hidden]"
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.45, ease: "easeOut", delay: 1.2 }}  // ⬅ increased delay
           >
             Driven by experience. <br className="hidden md:block" />
             Guided by integrity.
-          </p>
+          </motion.p>
+          {/* === /CHANGED */}
         </div>
       </div>
 
@@ -152,7 +158,6 @@ export default function About() {
         </div>
       </section>
 
-     
       <div className="mt-6 mb-25">
         <div className="flex items-center gap-3 text-sm">
           <span className="inline-block h-2 w-2 rounded-full bg-zinc-400/90" />

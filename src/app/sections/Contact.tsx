@@ -4,7 +4,7 @@ import Input from "../components/Input";
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-14">
+    <section id="contact" className="mx-auto max-w-7xl  sm:px-6 py-12 sm:py-16">
       <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 items-start">
         <div className="pt-2">
           <div className="flex items-center gap-3 text-sm">

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Why() {
   return (
-    <section id="why" className="mx-auto max-w-7xl mt-20 px-4 sm:px-6 py-10 sm:py-14">
+    <section id="why" className="mx-auto max-w-7xl mt-20 -mb-25 px-4 sm:px-6 sm:py-14">
       <div className="pt-2">
         <div className="flex items-center gap-3 text-sm">
           <span className="inline-block h-2 w-2 rounded-full bg-zinc-400/90" />
@@ -29,14 +29,9 @@ export default function Why() {
         </p>
       </div>
 
-      {/* Stack that changes order by breakpoint:
-          - Mobile: Cards first, Badges second
-          - Desktop (lg+): Badges first, Cards second (original look) */}
+    
       <div className="mt-6 sm:mt-8 lg:mt-10 grid gap-8">
-        {/* CARDS — mobile first (order-1), desktop second (lg:order-2) */}
-        
-
-        {/* BADGES — mobile second (order-2), desktop first (lg:order-1) */}
+       
         <motion.div
           className="order-2 lg:order-1 relative mt-2 lg:mt-0 h-[340px] sm:h-[420px] lg:h-[520px] w-full"
           initial="hidden"

@@ -22,13 +22,13 @@ export default function Footer({ footerVh }: { footerVh: number }) {
   return (
     <footer
       className="fixed bottom-0 left-0 right-0 z-0 bg-black text-zinc-300 text-sm"
-      style={{ height: `${footerVh}vh` }} 
+      style={{ height: `${footerVh}vh` }}
     >
-      
+
       <div className="relative h-full flex flex-col justify-end">
         <div className="mx-auto max-w-7xl sm:px-10 w-full pb-1 ">
           <div className="grid md:grid-cols-3 gap-12 w-full items-start mb-6">
-         
+
             <div className="flex flex-col items-start justify-center">
               <img
                 src="/logo_beli.png"
@@ -37,7 +37,7 @@ export default function Footer({ footerVh }: { footerVh: number }) {
               />
             </div>
 
-          
+
             <div className="flex flex-col">
               <h3 className="uppercase tracking-wide text-zinc-400 mb-8">
                 Contact
@@ -79,7 +79,7 @@ export default function Footer({ footerVh }: { footerVh: number }) {
               </div>
             </div>
 
-            
+
             <div className="flex flex-col">
               <h3 className="uppercase tracking-wide text-zinc-400 mb-8">
                 Socials
@@ -113,7 +113,7 @@ export default function Footer({ footerVh }: { footerVh: number }) {
             </div>
           </div>
 
-         
+
           <div className="text-xs text-zinc-500 border-t border-zinc-800 pt-5 text-center md:text-right">
             © {new Date().getFullYear()} Macau Station. All rights reserved.
           </div>
