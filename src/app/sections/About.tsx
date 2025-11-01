@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function About() {
-  // === “We are …” 
+  // We are
   const weSectionRef = useRef<HTMLDivElement | null>(null);
   const linesGroupRef = useRef<HTMLDivElement | null>(null);
   const line0Ref = useRef<HTMLParagraphElement | null>(null);
@@ -54,25 +54,31 @@ export default function About() {
   const weY = useTransform(scrollYProgress, [0, 1], [weStart, weStart + weDelta]);
 
   return (
-    <section id="about" className="mx-auto max-w-5xl px-8 py-14 mt-12">
-      <div className="grid md:grid-cols-[500px_1fr] gap-15 items-start mt-15">
-        <div className="relative h-96 overflow-hidden bg-zinc-200 rounded-3xl">
-          <div
-            className="absolute inset-0 bg-[url('/slika2.jpg')] bg-center bg-cover bg-no-repeat bg-fixed"
-            aria-hidden
+    <section id="about" className="mx-auto max-w-6xl px-6 sm:px-8 py-14 mt-12">
+    
+      <div className="grid md:grid-cols-2 gap-10 items-center">
+       
+        <div className="relative h-[400px] sm:h-[500px] lg:h-[550px]  overflow-hidden rounded-3xl">
+          <motion.div
+            className="absolute left-0 top-0 h-full will-change-transform transform-gpu origin-left"
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.15 }}
+            viewport={{ once: true, amount: 0.35 }}
           >
             <Image
-              src="/slika2.jpg"
+              src="/slika2.jpg" 
               alt="O podjetju"
               fill
               className="object-cover"
-              sizes="(min-width:1024px) 1152px, (min-width:640px) 640px, 100vw"
+              sizes="(min-width:1024px) 50vw, 100vw"
               priority={false}
             />
-          </div>
+          </motion.div>
         </div>
 
-        <div className="pt-2">
+    
+        <div className="pt-4 ">
           <div className="flex items-center gap-3 text-sm">
             <span className="inline-block h-2 w-2 rounded-full bg-zinc-400/90" />
             <span data-split className="tracking-wide text-zinc-500/90">
@@ -82,15 +88,14 @@ export default function About() {
 
           <h2
             data-split
-            className="mt-6 font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)]"
+            className="mt-6 font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800 text-[clamp(1.5rem,4vw,4rem)]"
           >
             From Origin to <br className="hidden md:block" /> Every Destination
           </h2>
 
-          {/* === CHANGED: smooth, GPU-accelerated reveal (no lag) */}
           <motion.p
             data-split
-            className="mt-8 max-w-3xl text-[15px] leading-8 text-zinc-600/90 will-change-transform transform-gpu [backface-visibility:hidden]"
+            className="mt-8 max-w-3xl text-[15px] leading-8 text-zinc-600 will-change-transform transform-gpu [backface-visibility:hidden]"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
@@ -102,23 +107,22 @@ export default function About() {
 
           <motion.p
             data-split
-            className="mt-4 font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1rem,1vw,1rem)] will-change-transform transform-gpu [backface-visibility:hidden]"
+            className="mt-4 font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800 text-[clamp(1rem,1vw,1rem)] will-change-transform transform-gpu [backface-visibility:hidden]"
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.45, ease: "easeOut", delay: 1.2 }}  // ⬅ increased delay
+            transition={{ duration: 0.45, ease: "easeOut", delay: 1.2 }}
           >
             Driven by experience. <br className="hidden md:block" />
             Guided by integrity.
           </motion.p>
-          {/* === /CHANGED */}
         </div>
       </div>
 
       {/* “We are …” */}
       <section
         ref={weSectionRef}
-        className="mx-auto w-full max-w-2xl px-20 py-20 mt-25"
+        className="mx-auto w-full max-w-2xl px-8 py-20 mt-24"
       >
         <div className="grid md:grid-cols-[max-content_1fr] gap-6 items-center">
           <div
@@ -130,7 +134,7 @@ export default function About() {
               className="
                 absolute left-0 -translate-y-1/2
                 font-medium leading-[0.98] tracking-[-0.01em]
-                text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)]
+                text-zinc-800 text-[clamp(1.5rem,4vw,4rem)]
                 whitespace-nowrap will-change-transform w-full
               "
             >
@@ -141,16 +145,16 @@ export default function About() {
           <div ref={linesGroupRef} className="flex flex-col gap-3 mt-0">
             <p
               ref={line0Ref}
-              className="font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)] whitespace-nowrap"
+              className="font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800 text-[clamp(1.5rem,4vw,4rem)] whitespace-nowrap"
             >
               Traders.
             </p>
-            <p className="font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)] whitespace-nowrap">
+            <p className="font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800 text-[clamp(1.5rem,4vw,4rem)] whitespace-nowrap">
               Connectors.
             </p>
             <p
               ref={line2Ref}
-              className="font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800/95 text-[clamp(1.5rem,4vw,4rem)] whitespace-nowrap"
+              className="font-medium leading-[0.98] tracking-[-0.01em] text-zinc-800 text-[clamp(1.5rem,4vw,4rem)] whitespace-nowrap"
             >
               Global&nbsp;Thinkers.
             </p>
@@ -158,6 +162,7 @@ export default function About() {
         </div>
       </section>
 
+      {/* What We Deliver */}
       <div className="mt-6 mb-25">
         <div className="flex items-center gap-3 text-sm">
           <span className="inline-block h-2 w-2 rounded-full bg-zinc-400/90" />
@@ -182,7 +187,7 @@ export default function About() {
         </p>
       </div>
 
-      {/* === CARDS */}
+      {/* CARDS */}
       <div
         data-cards
         data-nosplit
@@ -191,6 +196,7 @@ export default function About() {
           grid gap-10 sm:grid-cols-2 lg:grid-cols-3
           font-normal leading-[0.98] tracking-[-0.01em] text-zinc-700/90
           text-[clamp(1rem,2vw,2rem)]
+          mb-25 mx-auto max-w-7xl px-6 sm:px-8
         "
       >
         {[
