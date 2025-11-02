@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./styles/globals.css";
+import  "./styles/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Macau Station",
   description: "Global Trade Solution Provider",
   icons: {
-    icon: "./public/ms.logo3.png",           
+    icon: ".../public/ms.logo3.png",           
     shortcut: "./public/ms.logo3.png",       
     apple: "./public/ms.logo3.png",          
   }

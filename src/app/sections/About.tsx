@@ -56,7 +56,7 @@ export default function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-6 sm:px-8 py-14 mt-12">
     
-      <div className="grid md:grid-cols-2 gap-10 items-center">
+      <div className="grid md:grid-cols-2 gap-10">
        
         <div className="relative h-[400px] sm:h-[500px] lg:h-[550px]  overflow-hidden rounded-3xl">
           <motion.div
@@ -71,7 +71,7 @@ export default function About() {
               alt="O podjetju"
               fill
               className="object-cover"
-              sizes="(min-width:1024px) 50vw, 100vw"
+              sizes="(min-width:900px) 50vw, 100vw"
               priority={false}
             />
           </motion.div>
