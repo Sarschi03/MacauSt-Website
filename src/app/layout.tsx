@@ -12,16 +12,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Macau Station",
   description: "Global Trade Solution Provider",
   icons: {
     icon: [
       { url: "/ms.logo1.png", type: "image/png", sizes: "16x16" },
       { url: "/ms.logo1.png", type: "image/png", sizes: "32x32" },
+      { url: "/ms.logo1.png", type: "image/png", sizes: "192x192" },
     ],
-    shortcut: "/ms.logo3.png",
-    apple: "/ms.logo3.png",
+    apple: "/ms.logo1.png",
+    shortcut: "/ms.logo1.png",
   },
   openGraph: {
     title: "Macau Station",
