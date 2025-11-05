@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   description: "Global Trade Solution Provider",
   icons: {
     icon: [
-      { url: "/ms.logo3.png", type: "image/png", sizes: "32x32" },
-      { url: "/ms.logo3.png", type: "image/png", sizes: "192x192" }, // optional larger
+      { url: "/ms.logo1.png", type: "image/png", sizes: "32x32" },
+      { url: "/ms.logo1.png", type: "image/png", sizes: "192x192" }, // optional larger
       { url: "/favicon.ico", sizes: "any" }, // optional ICO fallback
     ],
     apple: "/ms.logo2.png",
