@@ -19,7 +19,7 @@ export default function Hero() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/30" />
 
   
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-12 min-h-screen flex items-center">
@@ -27,7 +27,7 @@ export default function Hero() {
        
           <h1
             data-split
-            className="mt-8 sm:mt-10 font-large leading-[0.98] tracking-[-0.01em] text-zinc-200 text-[clamp(1.75rem,5vw,4rem)]"
+            className="mt-2 sm:mt-5 font-large leading-[0.98] tracking-[-0.01em] text-zinc-200 text-[clamp(5rem,5vw,4rem)]"
           >
             MACAU STATION
           </h1>

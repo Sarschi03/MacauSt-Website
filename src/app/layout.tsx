@@ -15,11 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Macau Station",
   description: "Global Trade Solution Provider",
-  icons: {
-    icon: ".../public/ms.logo3.png",           
-    shortcut: "./public/ms.logo3.png",       
-    apple: "./public/ms.logo3.png",          
-  }
+  icons: [
+    { url: "/ms.logo3.png", sizes: "32x32", type: "image/png" },
+    { url: "/ms.logo3.png", sizes: "192x192", type: "image/png" },
+  ],          
 };
 
 export default function RootLayout({

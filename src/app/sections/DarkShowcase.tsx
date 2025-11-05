@@ -26,9 +26,9 @@ export default function DarkShowcase() {
                 <div className="mt-8 sm:mt-10">
                     <div className="relative">
                         {/* Image Card */}
-                        <div className="relative overflow-hidden rounded-3xl h-[58vw] max-h-[24rem] sm:h-80 lg:h-96">
+                        <div className="relative overflow-hidden rounded-3xl h-[70vw] max-h-[24rem] sm:h-80 lg:h-96">
                             <Image
-                                src="/cargo2.jpg"
+                                src="/12.jpg"
                                 alt="Cargoship"
                                 fill
                                 className="object-cover"
@@ -37,7 +37,7 @@ export default function DarkShowcase() {
                            
                             <span
                                 aria-hidden
-                                className="pointer-events-none absolute bottom-[-24px] right-[-24px]
+                                className="pointer-events-none absolute bottom-[-30px] right-[-24px]
                            w-[160px] h-[100px] rounded-[20px]
                            sm:w-[220px] sm:h-[140px] sm:rounded-[32px]
                            lg:w-[220px] lg:h-[130px] lg:rounded-[40px]
